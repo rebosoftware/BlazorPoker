@@ -1,0 +1,71 @@
+﻿@page "/hand"
+
+@using BPData
+@using BPData.Lists;
+@using BPData.Models;
+@using BPData.Services;
+
+<!--services-->
+@inject DeckService DeckSvc
+@inject EvalService EvalService
+@inject GameService GameSvc
+
+<table>
+    <tr>
+        @foreach (Card card in player.Hand)
+        {
+            <td>
+                <HandCard player="@player" card="@card" me="@me" alwaysshow="@alwaysshow" />
+            </td>
+
+        }
+    </tr>
+</table>
+<br />
+
+@if (player.Name == me.Name)
+{
+    <br />
+    @player.HandRank.FullName
+    
+    @if(player.HandRank.Winner)
+    {
+        <span>WINNER!</span>
+    }
+}
+else
+{
+    if (alwaysshow || GameSvc.State == BPData.BPConstants.GS_Draw)
+    {
+        <br />
+        @player.HandRank.FullName
+        
+        @if(player.HandRank.Winner)
+        {
+            <span>WINNER!</span>
+        }
+    }
+}
+
+@code {
+    [Parameter]
+    public Player player { get; set; }
+
+    [Parameter]
+    public Player me { get; set; }
+
+    [Parameter]
+    public bool alwaysshow { get; set; }
+
+    [Parameter]
+    public string cardheight { get; set; }
+
+    [Parameter]
+    public string cardwidth { get; set; }
+
+    protected override void OnInitialized()
+    {
+        cardheight = "95";
+        cardwidth = "60";
+    }
+}

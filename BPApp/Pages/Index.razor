@@ -1,0 +1,54 @@
+﻿@page "/"
+@using BPData
+@using BPData.Lists;
+@using BPData.Models;
+@using BPData.Services;
+
+<!--Game code-behind-->
+@inherits IndexBase
+<!--services-->
+@inject DeckService DeckSvc
+@inject EvalService EvalService
+@inject GameService GameSvc
+
+@if (GameSvc == null || GameSvc.State == BPData.BPConstants.GS_PreGame || 
+        GameSvc.State == BPData.BPConstants.GS_WaitForPlayers)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <button class="btn btn-primary" @onclick="NewGame">New Game!</button>
+    <br /><br />
+
+    foreach(Player p in GameSvc.GetPlayers())
+    {
+        <Hand player="@p" alwaysshow="@AlwaysShow" me="@me"></Hand>
+        <br /><br />
+    }
+
+    <!--
+    <Hand player="@dealer" alwaysshow="@AlwaysShow" />
+    <br /><br />
+
+    <Hand player="@player" />
+    <br /><br />-->
+
+    <button class="btn btn-primary" @onclick="Discard">Discard</button>
+    <span>&nbsp;</span>
+    <button class="btn btn-primary" @onclick="Draw">Draw</button>
+    <br /><br />
+
+
+    <img src="/table.png" />
+    <!--
+    <div style="background-image:url(@TableImage);height:100%;background-position:center;background-repeat:no-repeat;background-size:cover;">
+    </div>
+    -->
+}
+
+@code {
+
+    //we do code-behind here :) see IndexBase
+
+}

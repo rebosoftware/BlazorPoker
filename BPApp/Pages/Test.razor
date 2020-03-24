@@ -1,0 +1,144 @@
+﻿@page "/test"
+
+@using BPData
+@using BPData.Lists;
+@using BPData.Models;
+@using BPData.Services;
+
+<!--Game code-behind-->
+@inherits IndexBase
+<!--services-->
+@inject DeckService DeckSvc
+@inject EvalService EvalService
+@inject GameService GameSvc
+
+<h1>Blazor Poker Tester</h1>
+
+<p>This component tests all BPData services.</p>
+
+@if (Deck == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>Test Evaluating Hands</p>
+    
+    @RoyalFlushCards
+    <br />
+    @EvalRoyalFlush
+    <br /><br />
+
+    @StraightFlushCards
+    <br />
+    @EvalStraightFlush
+    <br /><br />
+
+
+   
+}
+
+@code {
+
+    private List<Card> Deck = null;
+    
+    private string EvalRoyalFlush = "";
+    private string RoyalFlushCards = "";
+
+    private string EvalStraightFlush = "";
+    private string StraightFlushCards = "";
+ 
+    protected override void OnInitialized()
+    {
+        Deck = DeckSvc.GetDeck();
+
+        EvalRoyalFlush = BPConstants.Rank_RoyalFlushDescr + ": ";
+        EvalStraightFlush = BPConstants.Rank_StraightFlushDescr + ": ";
+
+        //royal flush
+        List<Card> c1 = new List<Card>();
+        c1.Add(Deck[0]);
+        RoyalFlushCards += Deck[0].FullName.ToString() + ", ";
+        c1.Add(Deck[12]);
+        RoyalFlushCards += Deck[12].FullName.ToString() + ", ";
+        c1.Add(Deck[11]);
+        RoyalFlushCards += Deck[11].FullName.ToString() + ", ";
+        c1.Add(Deck[10]);
+        RoyalFlushCards += Deck[10].FullName.ToString() + ", ";
+        c1.Add(Deck[9]);
+        RoyalFlushCards += Deck[9].FullName.ToString() + " ";
+        Rank r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_RoyalFlush) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+                
+        //straight flush
+        c1 = new List<Card>();
+        c1.Add(Deck[4]);
+        StraightFlushCards += Deck[4].FullName.ToString() + ", ";
+        c1.Add(Deck[5]);
+        StraightFlushCards += Deck[5].FullName.ToString() + ", ";
+        c1.Add(Deck[6]);
+        StraightFlushCards += Deck[6].FullName.ToString() + ", ";
+        c1.Add(Deck[7]);
+        StraightFlushCards += Deck[7].FullName.ToString() + ", ";
+        c1.Add(Deck[8]);
+        StraightFlushCards += Deck[8].FullName.ToString() + ", ";
+        r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_StraightFlush) { EvalStraightFlush += "Passed."; } else { EvalStraightFlush += "FAILED."; }
+
+        //4 of a kind
+        c1 = new List<Card>();
+        c1.Add(Deck[0]);
+        c1.Add(Deck[13]);
+        c1.Add(Deck[9]);
+        c1.Add(Deck[26]);
+        c1.Add(Deck[39]);
+        r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_4ofAKind) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+
+        //full house
+        c1 = new List<Card>();
+        c1.Add(Deck[0]);
+        c1.Add(Deck[13]);
+        c1.Add(Deck[1]);
+        c1.Add(Deck[26]);
+        c1.Add(Deck[14]);
+        r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_FullHouse) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+
+        // flush
+        c1 = new List<Card>();
+        c1.Add(Deck[4]);
+        c1.Add(Deck[10]);
+        c1.Add(Deck[6]);
+        c1.Add(Deck[2]);
+        c1.Add(Deck[8]);
+        r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_Flush) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+        
+        //straight
+        c1 = new List<Card>();
+        c1.Add(Deck[2]);
+        c1.Add(Deck[3]);
+        c1.Add(Deck[17]);
+        c1.Add(Deck[31]);
+        c1.Add(Deck[45]);
+        r = EvalService.Evaluate(c1);
+        if (r.Value == BPConstants.Rank_Straight) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+
+        //3 of a kind
+
+
+        //2 pair
+
+
+        //pair
+
+
+        //high card
+
+
+        //ace test for low val when A 2 3 4 5 hand
+
+
+    }
+}

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="wwwroot\cards\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BPData">
+      <HintPath>..\BPData\BPData\bin\Debug\netcoreapp2.1\BPData.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
