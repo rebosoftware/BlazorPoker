@@ -18,7 +18,7 @@
                 @if (GameSvc.State != BPData.BPConstants.GS_Draw)
                 {
                     <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/card_discard.png" alt="Discard">
+                    <img id="@card.DeckID" @onclick="@(e => discard())" height="@cardheightDiscard" width="@cardwidthDiscard" src="cards/card_discard.png" alt="Discard">
                 }
                 else
                 {
@@ -45,7 +45,7 @@ else
                 {
                     <td>
                     <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/@card.ImageName" alt="@card.FullName">
+                    <img height="@cardheight" width="@cardwidth" src="cards/@card.ImageName" alt="@card.FullName">
                     </td>
                 }
             </tr>
@@ -84,11 +84,22 @@ else
     [Parameter]
     public string cardwidth { get; set; }
 
+    [Parameter]
+    public string cardheightDiscard { get; set; }
+
+    [Parameter]
+    public string cardwidthDiscard { get; set; }
 
     protected override void OnInitialized()
     {
-        cardheight = "170";
+        cardheight = "160";
         cardwidth = "100";
+
+    
+        cardheightDiscard = "140";
+        cardwidthDiscard = "100";
+
+
     }
 
     //set the discard state, used later to actually dicard the card
