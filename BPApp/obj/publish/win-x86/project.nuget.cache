@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "96e7kTgIa5yHJ06sZbRVsSS3o2YKYtbBlnPfpLAdhXhXNOXyCezfRS3ItXV/ZQi1zsz7HpxOzs3QEDN4D+ubfQ==",
+  "success": true,
+  "projectFilePath": "C:\\Rebosoft\\BlazorPoker\\BPApp\\BPApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\3.1.2\\microsoft.netcore.app.runtime.win-x86.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\3.1.2\\microsoft.windowsdesktop.app.runtime.win-x86.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\3.1.2\\microsoft.aspnetcore.app.runtime.win-x86.3.1.2.nupkg.sha512"
+  ],
+  "logs": []
+}

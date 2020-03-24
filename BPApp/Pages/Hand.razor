@@ -21,11 +21,10 @@
         }
     </tr>
 </table>
-<br />
+
 
 @if (player.Name == me.Name)
 {
-    <br />
     @player.HandRank.FullName
     
     @if(player.HandRank.Winner)
@@ -37,9 +36,8 @@ else
 {
     if (alwaysshow || GameSvc.State == BPData.BPConstants.GS_Draw)
     {
-        <br />
         @player.HandRank.FullName
-        
+       
         @if(player.HandRank.Winner)
         {
             <span>WINNER!</span>

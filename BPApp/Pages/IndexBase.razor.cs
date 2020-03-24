@@ -20,6 +20,10 @@ namespace BPApp.Pages
         protected Player me = null;
         protected bool AlwaysShow { get; set; }
 
+        protected bool DisableDiscard { get; set; }
+        protected bool DisableDraw { get; set; }
+
+
         protected string TableImage = "http://localhost:63988/table.png";
         
         /// <summary>
@@ -27,6 +31,9 @@ namespace BPApp.Pages
         /// </summary>
         protected override void OnInitialized()
         {
+            DisableDiscard = true;
+            DisableDraw = true;
+
             AlwaysShow = false;
 
             //initialize the game
@@ -55,13 +62,16 @@ namespace BPApp.Pages
 
         protected void Discard()
         {
+            DisableDiscard = true;
             GameSvc.DiscardPlayersCards();
+            DisableDraw = false;
         }
 
         protected void Draw()
-        {                     
+        {
+            DisableDraw = true;
+            DisableDiscard = true;
             GameSvc.DealPlayersDraw();
-
             GameSvc.ChooseWinners();
         }
 
@@ -69,6 +79,8 @@ namespace BPApp.Pages
         {
             //start the game, state will be GS_WaitForDiscard
             GameSvc.StartGame();
+            DisableDraw = true;
+            DisableDiscard = false;
         }
     }
 }
