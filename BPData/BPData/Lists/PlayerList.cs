@@ -242,8 +242,22 @@ namespace BPData.Lists
             {
                 if (player.HandRank.Value == highestRank)
                 {
-                    player.HandRank.TotalValue = player.HandRank.Value + player.HandRank.Tie1 + player.HandRank.Tie2 + player.HandRank.Tie3 + player.HandRank.Tie4;
-                    if(player.HandRank.TotalValue > totalValue)
+                    player.HandRank.TotalValue =
+                        player.HandRank.Value * 1000 +
+                        player.HandRank.Four * 10000 +
+                        player.HandRank.High * 1000 +
+                        player.HandRank.Pair * 1000 +
+                        player.HandRank.Pair2 * 100 +
+                        player.HandRank.Straight * 1000 +
+                        player.HandRank.Three * 10000 +
+                        player.HandRank.Flush * 10000 +
+                        player.HandRank.Tie1 +
+                        player.HandRank.Tie2 +
+                        player.HandRank.Tie3 +
+                        player.HandRank.Tie4 +
+                        player.HandRank.Tie5;
+
+                    if (player.HandRank.TotalValue > totalValue)
                     {
                         totalValue = player.HandRank.TotalValue;
                     }

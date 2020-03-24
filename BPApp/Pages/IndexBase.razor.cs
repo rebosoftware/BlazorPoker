@@ -59,10 +59,7 @@ namespace BPApp.Pages
         }
 
         protected void Draw()
-        {
-            //List<Card> cards = player.Hand;
-            //List<Card> h = GameSvc.GetPlayerHand(2);
-           
+        {                     
             GameSvc.DealPlayersDraw();
 
             GameSvc.ChooseWinners();
