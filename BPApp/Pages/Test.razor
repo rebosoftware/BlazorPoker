@@ -23,38 +23,37 @@
 else
 {
     <p>Test Evaluating Hands</p>
-    
+
     @RoyalFlushCards
     <br />
     @EvalRoyalFlush
-    <br /><br />
+    <br />
+    <br />
 
     @StraightFlushCards
     <br />
     @EvalStraightFlush
-    <br /><br />
+    <br />
+    <br />
 
-
-   
+    <span>TODO: More to come...</span>
 }
 
 @code {
 
     private List<Card> Deck = null;
-    
+
     private string EvalRoyalFlush = "";
     private string RoyalFlushCards = "";
 
     private string EvalStraightFlush = "";
     private string StraightFlushCards = "";
- 
+
     protected override void OnInitialized()
     {
         Deck = DeckSvc.GetDeck();
 
         EvalRoyalFlush = BPConstants.Rank_RoyalFlushDescr + ": ";
-        EvalStraightFlush = BPConstants.Rank_StraightFlushDescr + ": ";
-
         //royal flush
         List<Card> c1 = new List<Card>();
         c1.Add(Deck[0]);
@@ -69,8 +68,10 @@ else
         RoyalFlushCards += Deck[9].FullName.ToString() + " ";
         Rank r = EvalService.Evaluate(c1);
         if (r.Value == BPConstants.Rank_RoyalFlush) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
-                
+
         //straight flush
+        EvalStraightFlush = BPConstants.Rank_StraightFlushDescr + ": ";
+
         c1 = new List<Card>();
         c1.Add(Deck[4]);
         StraightFlushCards += Deck[4].FullName.ToString() + ", ";
@@ -81,11 +82,13 @@ else
         c1.Add(Deck[7]);
         StraightFlushCards += Deck[7].FullName.ToString() + ", ";
         c1.Add(Deck[8]);
-        StraightFlushCards += Deck[8].FullName.ToString() + ", ";
+        StraightFlushCards += Deck[8].FullName.ToString() + " ";
         r = EvalService.Evaluate(c1);
         if (r.Value == BPConstants.Rank_StraightFlush) { EvalStraightFlush += "Passed."; } else { EvalStraightFlush += "FAILED."; }
 
         //4 of a kind
+        string Eval4ofAKind = BPConstants.Rank_4ofAKindDescr + ": ";
+
         c1 = new List<Card>();
         c1.Add(Deck[0]);
         c1.Add(Deck[13]);
@@ -93,9 +96,10 @@ else
         c1.Add(Deck[26]);
         c1.Add(Deck[39]);
         r = EvalService.Evaluate(c1);
-        if (r.Value == BPConstants.Rank_4ofAKind) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+        if (r.Value == BPConstants.Rank_4ofAKind) { Eval4ofAKind += "Passed."; } else { Eval4ofAKind += "FAILED."; }
 
         //full house
+        string EvalFullHouse = BPConstants.Rank_FullHouseDescr + ": ";
         c1 = new List<Card>();
         c1.Add(Deck[0]);
         c1.Add(Deck[13]);
@@ -103,9 +107,10 @@ else
         c1.Add(Deck[26]);
         c1.Add(Deck[14]);
         r = EvalService.Evaluate(c1);
-        if (r.Value == BPConstants.Rank_FullHouse) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+        if (r.Value == BPConstants.Rank_FullHouse) { EvalFullHouse += "Passed."; } else { EvalFullHouse += "FAILED."; }
 
         // flush
+        string EvalFlush = BPConstants.Rank_FlushDescr + ": ";
         c1 = new List<Card>();
         c1.Add(Deck[4]);
         c1.Add(Deck[10]);
@@ -113,9 +118,10 @@ else
         c1.Add(Deck[2]);
         c1.Add(Deck[8]);
         r = EvalService.Evaluate(c1);
-        if (r.Value == BPConstants.Rank_Flush) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
-        
+        if (r.Value == BPConstants.Rank_Flush) { EvalFlush += "Passed."; } else { EvalFlush += "FAILED."; }
+
         //straight
+        string EvalStraight = BPConstants.Rank_StraightDescr + ": ";
         c1 = new List<Card>();
         c1.Add(Deck[2]);
         c1.Add(Deck[3]);
@@ -123,7 +129,7 @@ else
         c1.Add(Deck[31]);
         c1.Add(Deck[45]);
         r = EvalService.Evaluate(c1);
-        if (r.Value == BPConstants.Rank_Straight) { EvalRoyalFlush += "Passed."; } else { EvalRoyalFlush += "FAILED."; }
+        if (r.Value == BPConstants.Rank_Straight) { EvalStraight += "Passed."; } else { EvalStraight += "FAILED."; }
 
         //3 of a kind
 

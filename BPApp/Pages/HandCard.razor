@@ -15,16 +15,18 @@
     <table cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/card_discard.png" alt="Discard">
+                @if (GameSvc.State != BPData.BPConstants.GS_Draw)
+                {
+                    <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
+                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/card_discard.png" alt="Discard">
+                }
+                else
+                {
+                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/card_gameover.png" alt="Discard">
+                }
             </td>
         </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    </table>
+      </table>
 }
 else
 {
@@ -47,11 +49,6 @@ else
                     </td>
                 }
             </tr>
-            <tr>
-                <td>
-                    &nbsp;<!--<input checked="@card.Discard" type="checkbox" @onchange="@(e => discard())" />X-->
-                </td>
-            </tr>
         </table>
     }
     else
@@ -61,11 +58,6 @@ else
                 <td>
                     <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
                     <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/@card.ImageName" alt="@card.FullName">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                   &nbsp;
                 </td>
             </tr>
         </table>
@@ -95,8 +87,8 @@ else
 
     protected override void OnInitialized()
     {
-        cardheight = "95";
-        cardwidth = "60";
+        cardheight = "170";
+        cardwidth = "100";
     }
 
     //set the discard state, used later to actually dicard the card
