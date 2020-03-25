@@ -12,45 +12,36 @@
 
 <table align="center">
     <tr>
+        <td>
+            <span><image src="cards/check2_no.png"></image></span>
+        </td>
         @foreach (Card card in player.Hand)
         {
-            <td>
-                <HandCard DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" CardHeight="@CardHeight" CardWidth="@CardWidth" player="@player" card="@card" me="@me" alwaysshow="@alwaysshow" />
-            </td>
-
+        <td>
+            <HandCard DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" CardHeight="@CardHeight" CardWidth="@CardWidth" player="@player" card="@card" me="@me" alwaysshow="@alwaysshow" />
+        </td>
         }
-    </tr>
-</table>
-
-
-@if (player.Name == me.Name)
-{
-    <div align="center">
-
-        <font face="arial" color="white">@player.HandRank.FullName</font>
-
-        @if (player.HandRank.Winner)
-        {
-            <span><font face="arial" color="white">WINNER!</font></span>
-        }
-    </div>
-
-}
-else
-{
-    if (alwaysshow || GameSvc.State == BPData.BPConstants.GS_Draw)
-    {
-        <div align="center">
-            <font face="arial" color="white">@player.HandRank.FullName</font>
-
+        <td>
             @if (player.HandRank.Winner)
             {
-                <span><font face="arial" color="white">WINNER!</font></span>
+            <span><image src="cards/check2.png"></image></span>
             }
-        </div>
+            else
+            {
+            <span><image src="cards/check2_no.png"></image></span>
+            }
+        </td>
+    </tr>
+   
+</table>
 
-        }
-    }
+@if (player.Name == me.Name || alwaysshow || GameSvc.State == BPData.BPConstants.GS_Draw)
+{
+    <div align="center">
+        <font face="arial" color="white">@player.HandRank.FullName</font>
+    </div>
+}
+
 
 @code {
 

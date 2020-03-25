@@ -24,9 +24,12 @@ namespace BPApp.Pages
         protected bool DisableDraw { get; set; }
 
 
-        protected string TableImage = "table614_352.png";
-        protected string TableWidth = "614px";
-        protected string TableHeight = "352px";
+        //protected string TableImage = "table614_352.png";
+        //protected string TableImage = "table767_440.png";
+        protected string TableImage = "table500_492.png";
+
+        protected string TableWidth = "492px";
+        protected string TableHeight = "500px";
 
         protected string CardWidth = "50px";    //"50px";
         protected string CardHeight = "85px";   //"85px";

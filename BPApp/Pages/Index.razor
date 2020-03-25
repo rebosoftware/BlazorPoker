@@ -19,21 +19,28 @@
 else
 {
 <div style="background-image:url(@TableImage);height:@TableHeight;width:@TableWidth;background-position:center;background-repeat:no-repeat;background-size:cover;">
-    <br><br /><br />
+    <br><br /><br /><br />
     @foreach (Player p in GameSvc.GetPlayers())
     {
-        <Hand DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" cardheight="@CardHeight" cardwidth="@CardWidth" player="@p" alwaysshow="@AlwaysShow" me="@me"></Hand>
-        <br />
+    <Hand DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" cardheight="@CardHeight" cardwidth="@CardWidth" player="@p" alwaysshow="@AlwaysShow" me="@me"></Hand>
+    <br />
     }
-
+    <div align="center">
+        <button disabled="@DisableDiscard" class="btn btn-primary" @onclick="Discard">Discard/Hold</button>
+        <span>&nbsp;</span>
+        <button disabled="@DisableDraw" class="btn btn-primary" @onclick="Draw">Draw</button>
+        <span>&nbsp;</span>
+        <button class="btn btn-primary" @onclick="NewGame">New Game!</button>
+    </div>
 </div>
     
-    <br />
+  <!--  <br />
     <button disabled="@DisableDiscard" class="btn btn-primary" @onclick="Discard">Discard/Hold</button>
     <span>&nbsp;</span>
     <button disabled="@DisableDraw" class="btn btn-primary" @onclick="Draw">Draw</button>
     <span>&nbsp;</span>
     <button class="btn btn-primary" @onclick="NewGame">New Game!</button>
+      -->
 
 
 }
