@@ -18,11 +18,11 @@
                 @if (GameSvc.State != BPData.BPConstants.GS_Draw)
                 {
                     <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                    <img id="@card.DeckID" @onclick="@(e => discard())" height="@cardheightDiscard" width="@cardwidthDiscard" src="cards/card_discard.png" alt="Discard">
+                    <img id="@card.DeckID" @onclick="@(e => discard())" height="@DiscardHeight" width="@DiscardWidth" src="cards/card_discard.png" alt="Discard">
                 }
                 else
                 {
-                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/card_gameover.png" alt="Discard">
+                    <img @onclick="@(e => discard())" height="@CardHeight" width="@CardWidth" src="cards/card_gameover.png" alt="Discard">
                 }
             </td>
         </tr>
@@ -38,13 +38,13 @@ else
                 @if (GameSvc.State != BPData.BPConstants.GS_Draw)
                 {
                     <td>
-                    <img height="@cardheight" width="@cardwidth" src="cards/card_back.png" alt="back of playing card">
+                    <img height="@CardHeight" width="@CardWidth" src="cards/card_back.png" alt="back of playing card">
                     </td>
                 }
                 else
                 {
                     <td>
-                    <img height="@cardheight" width="@cardwidth" src="cards/@card.ImageName" alt="@card.FullName">
+                    <img height="@CardHeight" width="@CardWidth" src="cards/@card.ImageName" alt="@card.FullName">
                     </td>
                 }
             </tr>
@@ -56,7 +56,7 @@ else
             <tr>
                 <td>
                     <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                    <img @onclick="@(e => discard())" height="@cardheight" width="@cardwidth" src="cards/@card.ImageName" alt="@card.FullName">
+                    <img @onclick="@(e => discard())" height="@CardHeight" width="@CardWidth" src="cards/@card.ImageName" alt="@card.FullName">
                 </td>
             </tr>
         </table>
@@ -78,27 +78,21 @@ else
     public bool alwaysshow { get; set; }
 
     [Parameter]
-    public string cardheight { get; set; }
+    public string CardHeight { get; set; }
 
     [Parameter]
-    public string cardwidth { get; set; }
+    public string CardWidth { get; set; }
 
     [Parameter]
-    public string cardheightDiscard { get; set; }
+    public string DiscardHeight { get; set; }
 
     [Parameter]
-    public string cardwidthDiscard { get; set; }
+    public string DiscardWidth { get; set; }
+           
 
     protected override void OnInitialized()
     {
-        cardheight = "160";
-        cardwidth = "100";
-
     
-        cardheightDiscard = "140";
-        cardwidthDiscard = "100";
-
-
     }
 
     //set the discard state, used later to actually dicard the card

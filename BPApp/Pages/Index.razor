@@ -12,18 +12,22 @@
 @inject GameService GameSvc
 
 @if (GameSvc == null || GameSvc.State == BPData.BPConstants.GS_PreGame ||
-      GameSvc.State == BPData.BPConstants.GS_WaitForPlayers)
+     GameSvc.State == BPData.BPConstants.GS_WaitForPlayers)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    foreach (Player p in GameSvc.GetPlayers())
+<div style="background-image:url(@TableImage);height:@TableHeight;width:@TableWidth;background-position:center;background-repeat:no-repeat;background-size:cover;">
+    <br><br /><br />
+    @foreach (Player p in GameSvc.GetPlayers())
     {
-        <Hand player="@p" alwaysshow="@AlwaysShow" me="@me"></Hand>
+        <Hand DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" cardheight="@CardHeight" cardwidth="@CardWidth" player="@p" alwaysshow="@AlwaysShow" me="@me"></Hand>
         <br />
     }
 
+</div>
+    
     <br />
     <button disabled="@DisableDiscard" class="btn btn-primary" @onclick="Discard">Discard/Hold</button>
     <span>&nbsp;</span>
@@ -31,10 +35,7 @@ else
     <span>&nbsp;</span>
     <button class="btn btn-primary" @onclick="NewGame">New Game!</button>
 
-    <br /><br />
-    <img src="/table.png" />
-    <div style="background-image:url(@TableImage);height:100%;background-position:center;background-repeat:no-repeat;background-size:cover;">
-    </div>
+
 }
 
 @code {
