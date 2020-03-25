@@ -272,6 +272,15 @@ namespace BPData.Lists
                     winnerCount++;
                     player.HandRank.Winner = true;
                 }
+
+                if (player.HandRank.Winner)
+                {
+                    player.Wins += 1;
+                }
+                else
+                {
+                    player.Losses += 1;
+                }
             }
 
         }

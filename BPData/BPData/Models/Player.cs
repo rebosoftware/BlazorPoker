@@ -9,6 +9,8 @@ namespace BPData.Models
 {
     public class Player
     {
+        public int Wins { get; set; }
+        public int Losses { get; set; }
         public string Name { get; set; }
 
         //dealer, player, 
@@ -55,6 +57,8 @@ namespace BPData.Models
             Discard = new List<Card>();
             HandRank = new Rank();
             Human = true;
+            Wins = 0;
+            Losses = 0;
         }
 
     }

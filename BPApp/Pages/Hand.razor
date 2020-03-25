@@ -21,16 +21,17 @@
             <HandCard DiscardHeight="@DiscardHeight" DiscardWidth="@DiscardWidth" CardHeight="@CardHeight" CardWidth="@CardWidth" player="@player" card="@card" me="@me" alwaysshow="@alwaysshow" />
         </td>
         }
-        <td>
-            @if (player.HandRank.Winner)
-            {
+    <td>
+        @if (player.HandRank.Winner)
+        {
             <span><image src="cards/check2.png"></image></span>
-            }
-            else
-            {
+        }
+        else
+        {
             <span><image src="cards/check2_no.png"></image></span>
-            }
-        </td>
+        }
+        <font face="arial" color="white">@player.Wins</font>
+    </td>
     </tr>
    
 </table>

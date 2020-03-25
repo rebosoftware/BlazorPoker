@@ -139,6 +139,8 @@ namespace BPData.Services
         /// <param name="seat"></param>
         public void AutoDiscardPlayerCards(Player p)
         {
+            //todo: need flush try
+
             List<Card> discards = new List<Card>();
             if (p != null)
             {
