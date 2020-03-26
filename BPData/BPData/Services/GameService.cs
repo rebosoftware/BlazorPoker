@@ -139,8 +139,6 @@ namespace BPData.Services
         /// <param name="seat"></param>
         public void AutoDiscardPlayerCards(Player p)
         {
-            //todo: need flush try
-
             List<Card> discards = new List<Card>();
             if (p != null)
             {
@@ -154,6 +152,43 @@ namespace BPData.Services
                     rank.Value == BPConstants.Rank_Straight ||
                     rank.Value == BPConstants.Rank_FullHouse)
                 {
+                    return;
+                }
+
+                //go for a flush if we have 4 of the same suite
+                //tried 3 of same suite and seemed to lose allot
+                short goFlush = 0;
+                foreach (Card cOuter in p.Hand)
+                {
+                    int suitecount = 0;
+
+                    foreach (Card c in p.Hand)
+                    {
+                        if (c.SuiteID == cOuter.SuiteID)
+                        {
+                            suitecount++;
+
+                            if (suitecount > 3)
+                            {
+                                goFlush = cOuter.SuiteID;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (goFlush > 0)
+                {
+                    foreach (Card c in p.Hand)
+                    {
+                        if (c.SuiteID != goFlush)
+                        {
+                            c.Discard = true;
+                        }
+                    }
+
+                    //call the original discard
+                    DiscardPlayerCards(p);
+
                     return;
                 }
 
@@ -236,9 +271,12 @@ namespace BPData.Services
             }
         }
 
+        /// <summary>
+        /// deal all players in the game draw cards
+        /// </summary>
         public void DealPlayersDraw()
         {
-            //todo: dealer should go last
+            //todo: dealer should go last ie p1,p2,p3,dealer
             foreach(Player p in PlayersList.GetPlayers())
             {
                 //puill cards from the deck
@@ -252,6 +290,9 @@ namespace BPData.Services
             State = BPConstants.GS_Draw;            
         }
 
+        /// <summary>
+        /// compare ranks set a draw time and choose winner(s)
+        /// </summary>
         public void ChooseWinners()
         {
             PlayersList.ChooseWinners();
@@ -276,12 +317,20 @@ namespace BPData.Services
             }
         }
 
-        //get the players hand by seat
+        /// <summary>
+        /// get the players hand by seat
+        /// </summary>
+        /// <param name="seat"></param>
+        /// <returns></returns>
         public List<Card> GetPlayerHand(int seat)
         {
             return PlayersList.GetHand(seat);
         }
 
+        /// <summary>
+        /// gete players list
+        /// </summary>
+        /// <returns></returns>
         public List<Player> GetPlayers()
         {
             return PlayersList.GetPlayers();

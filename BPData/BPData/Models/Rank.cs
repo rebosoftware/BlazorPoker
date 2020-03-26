@@ -9,7 +9,6 @@ namespace BPData.Models
 {
     public class Rank
     {
-
         //weighted value of hand
         public short Value { get; set; }
 
@@ -21,7 +20,9 @@ namespace BPData.Models
 
         public bool Winner { get; set; }
 
-        //full name ie: Pair: Aces
+        /// <summary>
+        /// get the ranks full name ie: Pair of Aces
+        /// </summary>
         public string FullName 
         {
             get

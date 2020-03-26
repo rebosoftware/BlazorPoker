@@ -31,6 +31,11 @@ namespace BPData.Models
 
         public Rank HandRank { get; set; }
 
+        /// <summary>
+        /// mark a card discarded
+        /// </summary>
+        /// <param name="card"></param>
+        /// <param name="discard"></param>
         public void DiscardCard(Card card, bool discard)
         {
             foreach(Card c in Hand)
@@ -41,6 +46,10 @@ namespace BPData.Models
                 }
             }
         }
+
+        /// <summary>
+        /// init hand
+        /// </summary>
         public void InitHand()
         {
             Hand.Clear();
@@ -48,6 +57,9 @@ namespace BPData.Models
             HandRank = new Rank();
         }
 
+        /// <summary>
+        /// default ctr
+        /// </summary>
         public Player()
         {
             Name = "";

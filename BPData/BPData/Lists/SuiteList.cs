@@ -9,8 +9,10 @@ namespace BPData.Lists
     {
         //the underlying suite list
         private List<Suite> Suites = null;
-        
-        //default ctr builds a list of suites
+
+        /// <summary>
+        /// default ctr builds a list of suites
+        /// </summary>
         public SuiteList()
         {
             Suites = new List<Suite>();

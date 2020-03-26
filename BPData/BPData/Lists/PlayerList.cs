@@ -13,19 +13,29 @@ namespace BPData.Lists
         //the underlying list
         private List<Player> Players = null;
 
-        //default ctr builds a list of suites
+        
+        /// <summary>
+        /// defalut ctr
+        /// </summary>
         public PlayerList()
         {
             Players = new List<Player>();
         }
 
-        //return the underlying list of suites
+        /// <summary>
+        /// return the underlying list of players
+        /// </summary>
+        /// <returns></returns>
         public List<Player> GetPlayers()
         {
             return Players;
         }
 
-        //get a player by seat
+        /// <summary>
+        /// get a player by seat
+        /// </summary>
+        /// <param name="seat"></param>
+        /// <returns></returns>
         public Player GetPlayerBySeat(int seat)
         {
             foreach(Player player in Players)
@@ -39,7 +49,11 @@ namespace BPData.Lists
             return null;
         }
 
-        //get a player index by seat
+        /// <summary>
+        /// get the player index into the list by seat
+        /// </summary>
+        /// <param name="seat"></param>
+        /// <returns></returns>
         private int GetPlayerIndexBySeat(int seat)
         {
             int i = 0;
@@ -56,7 +70,11 @@ namespace BPData.Lists
             return -1;
         }
 
-        //add a player
+        /// <summary>
+        /// add a player by seat
+        /// </summary>
+        /// <param name="player"></param>
+        /// <returns></returns>
         public bool Add(Player player)
         {
             //check if already added and delete and re-add if thats the case
@@ -79,13 +97,19 @@ namespace BPData.Lists
             return true;
         }
 
-        //remove a player by seat
+        /// <summary>
+        /// remove a player by seat
+        /// </summary>
+        /// <param name="seat"></param>
         public void Remove(int seat)
         {
             Players.RemoveAt(GetPlayerIndexBySeat(seat));
         }
 
-        //fold a player by seat
+        /// <summary>
+        /// fold a player by seat
+        /// </summary>
+        /// <param name="seat"></param>
         public void Fold(int seat)
         {
             Player player = GetPlayerBySeat(seat);
@@ -97,7 +121,9 @@ namespace BPData.Lists
             }
         }
 
-        //init the players hand
+        /// <summary>
+        /// init all players hands
+        /// </summary>
         public void InitHand()
         {
             //clear hands of all the players
@@ -107,7 +133,11 @@ namespace BPData.Lists
             }
         }
         
-        //deal cards to the players
+        /// <summary>
+        /// deal cards to all players
+        /// </summary>
+        /// <param name="deck"></param>
+        /// <param name="cardCount"></param>
         public void Deal(ref List<Card> deck, short cardCount)
         {
             DeckService ds = new DeckService();
@@ -131,7 +161,11 @@ namespace BPData.Lists
             }
         }
 
-        //deal 1 player a list of cards
+        /// <summary>
+        /// deal 1 player x number of cards
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="cards"></param>
         public void Deal(Player player, List<Card> cards)
         {
             if (player != null)
@@ -140,7 +174,11 @@ namespace BPData.Lists
             }
         }
        
-
+        /// <summary>
+        /// discard cards by seat
+        /// </summary>
+        /// <param name="seat"></param>
+        /// <param name="cards"></param>
         public void Discard(int seat, List<Card> cards)
         {
             Player player = GetPlayerBySeat(seat);
@@ -150,6 +188,11 @@ namespace BPData.Lists
             }
         }
 
+        /// <summary>
+        /// discard cards by player
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="discards"></param>
         public void Discard(Player player, List<Card> discards)
         {
             if (player != null)
@@ -181,7 +224,11 @@ namespace BPData.Lists
             }
         }
 
-        //draw cards
+        /// <summary>
+        /// draw cards
+        /// </summary>
+        /// <param name="player"></param>
+        /// <param name="cards"></param>
         public void Draw(Player player, List<Card> cards)
         {
             if (player != null)
@@ -198,7 +245,11 @@ namespace BPData.Lists
             }
         }
 
-        //hand is made up of hand and draw cards
+        /// <summary>
+        /// get players hand by seat
+        /// </summary>
+        /// <param name="seat"></param>
+        /// <returns></returns>
         public List<Card> GetHand(int seat)
         {
             Player player = GetPlayerBySeat(seat);
@@ -210,7 +261,11 @@ namespace BPData.Lists
             return null;
         }
 
-        //todo
+        /// <summary>
+        /// get player by player?? todo: why do i need this??
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
         public Player GetPlayer(Player p)
         {
             foreach(Player player in Players)
@@ -225,6 +280,9 @@ namespace BPData.Lists
             return null;
         }
 
+        /// <summary>
+        /// choose winners
+        /// </summary>
         public void ChooseWinners()
         {
             short highestRank = 0;
@@ -242,6 +300,7 @@ namespace BPData.Lists
             {
                 if (player.HandRank.Value == highestRank)
                 {
+                    //todo: just a weighted hack of some kind for ties will refine later...
                     player.HandRank.TotalValue =
                         player.HandRank.Value * 1000 +
                         player.HandRank.Four * 10000 +

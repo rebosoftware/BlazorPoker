@@ -17,8 +17,15 @@
             <td>
                 @if (GameSvc.State != BPData.BPConstants.GS_Draw)
                 {
-                    <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
-                    <img id="@card.DeckID" @onclick="@(e => discard())" height="@DiscardHeight" width="@DiscardWidth" src="cards/card_discard.png" alt="Discard">
+                    if (player.Name != me.Name)
+                    {
+                        <img id="@card.DeckID" height="@DiscardHeight" width="@DiscardWidth" src="cards/card_discard.png" alt="Discard">
+                    }
+                    else
+                    {
+                        <!--Try it with a lambda. I was binding the onclick to the result of the function rather than the function itself.-->
+                        <img id="@card.DeckID" @onclick="@(e => discard())" height="@DiscardHeight" width="@DiscardWidth" src="cards/card_discard.png" alt="Discard">
+                    }
                 }
                 else
                 {
