@@ -1,0 +1,30 @@
+﻿@page "/devtable"
+
+@using BPData
+@using BPData.Lists;
+@using BPData.Models;
+@using BPData.Services;
+
+<!--services-->
+@inject DeckService DeckSvc
+@inject EvalService EvalService
+@inject GameService GameSvc
+
+    <div  align="center" style="height:'100%'; width:'100%'; padding:0px; background-image:url('table.png'); background-size:100% 100%; background-repeat: no-repeat; ">
+        <div align="center">
+            <image src="cards/1.png"></image>
+            <image src="cards/1.png"></image>
+            <image src="cards/1.png"></image>
+            <image src="cards/1.png"></image>
+            <image src="cards/1.png"></image>
+        </div>
+    </div>
+
+
+@code {
+    protected override void OnInitialized()
+    {
+
+    }
+
+}

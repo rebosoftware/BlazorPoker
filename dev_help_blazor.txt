@@ -1,0 +1,23 @@
+
+***so blazor client is still in preview mode
+***run this
+dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2
+
+**then you can use the template
+dotnet new blazorwasm -n BPClient
+
+To run the app from the CLI. I cd into the project directory and run:
+
+dotnet run
+
+then open this in chrome http://localhost:5000/
+
+
+Now I can load the app in a browser and edit and test my code changes.
+ I even noticed that "hot reload" works.
+
+I opened an issue with Microsoft Visual Studio Feedback System. A senior product manager 
+replied 4 days ago with this message: "We have started working on adding support for Blazor Web Assembly."
+
+-------------------------------------------------------------
+
