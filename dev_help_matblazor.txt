@@ -11,6 +11,13 @@ Add @using MatBlazor in main _Imports.razor
 
 @using MatBlazor
 
+For client-side and server-side Blazor - add script section to index.html or _Host.cshtml (head section)
+
+<script src="_content/MatBlazor/dist/matBlazor.js"></script>
+<link href="_content/MatBlazor/dist/matBlazor.css" rel="stylesheet" />
+
+matblazor.com
+
 *****************
 BlazorPoker\BPApp\dotnet add package MatBlazor
 
