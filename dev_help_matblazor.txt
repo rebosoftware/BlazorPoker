@@ -1,0 +1,18 @@
+Install MatBlazor library via nuget.
+
+Install-Package MatBlazor
+
+or
+
+dotnet add package MatBlazor
+
+_Imports.razor
+Add @using MatBlazor in main _Imports.razor
+
+@using MatBlazor
+
+*****************
+BlazorPoker\BPApp\dotnet add package MatBlazor
+
+
+

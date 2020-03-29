@@ -15,4 +15,8 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MatBlazor" Version="2.2.0" />
+  </ItemGroup>
+
 </Project>

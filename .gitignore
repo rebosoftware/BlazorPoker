@@ -1099,3 +1099,20 @@ BPData/BPData/obj/Debug/netcoreapp2.1/BPData.pdb
 /BPApp/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/HandCard - Copy.razor.g.cs
 /BPClient/bin/Debug/netstandard2.0
 /BPClient/obj
+/BPApp/bin/Debug/netcoreapp3.1/BPApp.StaticWebAssets.xml
+/BPApp/bin/Debug/netcoreapp3.1/MatBlazor.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Authorization.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Components.Forms.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Components.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Blazor.HttpClient.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.Abstractions.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Metadata.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.AspNetCore.Components.Web.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Options.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.Extensions.DependencyInjection.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.JSInterop.dll
+/BPApp/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Primitives.dll
+/BPApp/obj/Debug/netcoreapp3.1/Razor/Pages/DevMatBlazor.razor.g.cs
+/BPApp/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/DevMatBlazor.razor.g.cs
+/BPApp/obj/Debug/netcoreapp3.1/RazorDeclaration/Pages/DevTable - Copy.razor.g.cs

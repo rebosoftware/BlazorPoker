@@ -1,8 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "ZvGF3YTM+Bi9qX0f9eT5QsHlKvd1VAH77jd7vBTTb/njBWuhzPyvS6c/jbfTt/BbEc3XI93MPrH1hPaV4C8LkA==",
+  "dgSpecHash": "7uqoY0IwX+7WqmBAR+iAg+ZjjgkVgABy6b0z9zBvxgnGM3KaaKi9z1EzRx94mtN44NaoC13+GLm7yMhghAKX6g==",
   "success": true,
   "projectFilePath": "C:\\Rebosoft\\BlazorPoker\\BPApp\\BPApp.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\reboadmin\\.nuget\\packages\\matblazor\\2.2.0\\matblazor.2.2.0.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.authorization\\3.1.2\\microsoft.aspnetcore.authorization.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.blazor.httpclient\\3.1.0-preview4.19579.2\\microsoft.aspnetcore.blazor.httpclient.3.1.0-preview4.19579.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.components\\3.1.2\\microsoft.aspnetcore.components.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\3.1.2\\microsoft.aspnetcore.components.analyzers.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\3.1.2\\microsoft.aspnetcore.components.forms.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.components.web\\3.1.2\\microsoft.aspnetcore.components.web.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.aspnetcore.metadata\\3.1.2\\microsoft.aspnetcore.metadata.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.2\\microsoft.extensions.dependencyinjection.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.2\\microsoft.extensions.dependencyinjection.abstractions.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.2\\microsoft.extensions.logging.abstractions.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.extensions.options\\3.1.2\\microsoft.extensions.options.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.2\\microsoft.extensions.primitives.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\microsoft.jsinterop\\3.1.2\\microsoft.jsinterop.3.1.2.nupkg.sha512",
+    "C:\\Users\\reboadmin\\.nuget\\packages\\system.text.json\\4.7.0\\system.text.json.4.7.0.nupkg.sha512"
+  ],
   "logs": []
 }
