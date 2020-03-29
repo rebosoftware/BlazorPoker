@@ -1,23 +1,114 @@
+--------------------------------------------------------------------------
+***so blazor client is still in preview mode as of my download of vs 2019 community**
 
-***so blazor client is still in preview mode
 ***run this
 dotnet new -i Microsoft.AspNetCore.Blazor.Templates::3.0.0-preview9.19465.2
 
-**then you can use the template
+***then you can use the template to create a cleint app
 dotnet new blazorwasm -n BPClient
 
-To run the app from the CLI. I cd into the project directory and run:
-
+***To run the app from the CLI. I cd into the project directory and run:
 dotnet run
 
-then open this in chrome http://localhost:5000/
-
+***then open this in chrome 
+http://localhost:5000/ 
+(or wherever its listening)
 
 Now I can load the app in a browser and edit and test my code changes.
- I even noticed that "hot reload" works.
+I even noticed that "hot reload" works.
 
-I opened an issue with Microsoft Visual Studio Feedback System. A senior product manager 
-replied 4 days ago with this message: "We have started working on adding support for Blazor Web Assembly."
+MS response: "We have started working on adding support for Blazor Web Assembly."
 
 -------------------------------------------------------------
+
+In a Blazor Server app the _host.cshtml file is the client entry point to the application. 
+Unlike the Blazor WebAssembly application, the _Host.cshtml file is using Razor Pages to bootstrap the application. 
+
+@page "/"
+@namespace BPApp.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blazor Poker</title>
+    <base href="~/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/site.css" rel="stylesheet" />
+
+    <!--matblazor-->
+    <script src="_content/MatBlazor/dist/matBlazor.js"></script>
+    <link href="_content/MatBlazor/dist/matBlazor.css" rel="stylesheet" />
+
+</head>
+<body>
+    <app>
+        <component type="typeof(App)" render-mode="ServerPrerendered" />
+    </app>
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
+--------------------------------------------------------------------
+When configured for server-side operation the JavaScript file, blazor.server.js replaces blazor.webassembly.js. blazor.server.js invokes the SignalR client and establishes web socket communication with the server. 
+---------------------------------------------------------------
+services are added to the dependency injection container in the ConfigureServices method found in Startup.cs. 
+----------------------------------------------------------------
+Since only a small amount of JavaScript is required to bootstrap the client and no .NET assemblies are transferred to the client the Server-Side Blazor application is efficient with network traffic. 
+-------------------------------------------------------
+The Blazor WebAssembly template focuses on running static files completely in the browser, while the Full-Stack template includes ASP.NET Core hosting and Web API. Using the Blazor Server template utilizes the Blazor framework on the server and relies on SignalR in place of WebAssembly thus trading performance for a dependency on always being connected
+-----------------------------------------
+ When Razor generates the final output, all values are automatically converted to a string. There is no need to manually covert a value like TemperatureC even though it is an int, however we do have the option of customizing the formatting if we wish. 
+--------------------------------------
+It’s best practice to use asynchronous code whenever possible as it leads to an overall better user experience
+--------------------------------------
+Templated components are components that accept one or more UI templates as parameters
+Templates can be used customize a portion of the components rendered output.
+------------------------------------------
+To add a template to our WeatherDay component we’ll make use of the RenderFragment class. A RenderFragment represents a segment of UI content, implemented as a delegate that writes the content to a RenderTreeBuilder (the Blazor virtual DOM). 
+--------------------------------------------
+ [Parameter]      public RenderFragment CustomMessage { get; set; } 
+
+then
+
+   <h1 class="card-title">@TemperatureC C&deg;</h1>         @CustomMessage         <p class="card-text"> 
+------------------------------
+
+using Razor Components introduces a different architecture pattern and a special delegate called the EventCallback. 
+
+The EventCallback is a delegate-type used to expose events across components. A parent component can assign a callback method to a child component's EventCallback
+
+When using the EventCallback in this manner, the parent and child components are automatically re-rendered when events are raised. 
+
+-------------------
+One-way binding is useful when we need to represent data in our UI. It is particularly useful in displaying information for read-only scenarios. Twoway data binding is typically used to trigger several components to update their state based on other components in the system. Therefore, two-way data binding is generally used with input components where one input’s value is directly impacted by the value of another. 
+ 
+two-way binding by making use of the @bind directive. What’s interesting is our implementation thus far is very close to how @bind works internally. When @bind is called on an input by default, the value property is set and updated. In addition, the onchange event is the default event which triggers data binding. Blazor is also doing extra work to ensure that types are converted automatically. 
+ 
+-----------------------
+
+
+
+
+
+
+
+
+
 
