@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Welcome ReactPoker.com</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+    background-image:url('hptable2.png');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-size: 100% 100%;
+    width:100%;
+    height:100%;
+    margin:0;
+}
+.fulltable{
+    background-image:url('hptable2.png');
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    /*background-size: cover;*/
+    background-size: 100% 100%;
+}
+.fullscreenDiv {
+    background-color: #e8e8e8;
+    opacity: 100;
+    width: 100%;
+    height: auto;
+    bottom: 0px;
+    top: 0px;
+    left: 0;
+    position: absolute;
+}
+.centerscreenDiv {
+    position: absolute;
+    opacity: 100;
+    border: 1px solid blue;
+    height: 200px;
+    margin-top: -100px;	/*half the height*/
+  
+    width: 272px;
+    margin-left: -134px; /*half the width*/   
+    top: 50%;
+    left: 50%;
+ 
+}
+.centerFlexBox{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+</head>
+<body>
+
+<div class="fullscreenDiv fulltable">
+	
+	<div class="centerscreenDiv">
+		<img src='deck4/11.0.png' height='85' width='50'>
+		<img src='deck4/43.0.png' height='85' width='50'>
+		<img src='deck4/card_back.png' height='85' width='50'>
+		<img src='deck4/card_back.png' height='85' width='50'>
+		<img src='deck4/card_back.png' height='85' width='50'>
+		<br><br>
+		<img src='deck4/1.0.png' height='85' width='50' >
+		<img src='deck4/20.0.png' height='85' width='50' >
+		<img src='deck4/25.0.png' height='85' width='50' >
+		<img src='deck4/48.0.png' height='85' width='50' >
+		<img src='deck4/7.0.png' height='85' width='50' >
+	</div>
+</div>
+
+
+</body>
+</html>
+
+
+<!--<img src='hptable.png' style="position:absolute; top:0px; left:0px; zorder=5000;">
+-->

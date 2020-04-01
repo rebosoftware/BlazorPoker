@@ -10,15 +10,63 @@
 @inject EvalService EvalService
 @inject GameService GameSvc
 
-    <div  align="center" style="height:'100%'; width:'100%'; padding:0px; background-image:url('table.png'); background-size:100% 100%; background-repeat: no-repeat; ">
-        <div align="center">
-            <image src="cards/1.png"></image>
-            <image src="cards/1.png"></image>
-            <image src="cards/1.png"></image>
-            <image src="cards/1.png"></image>
-            <image src="cards/1.png"></image>
-        </div>
+<style>
+    .fulltable {
+        background-image: url('table.png');
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        /*background-size: cover;*/
+        background-size: 100% 100%;
+    }
+
+    .fullscreenDiv {
+        background-color: #e8e8e8;
+        opacity: 100;
+        width: 100%;
+        height: auto;
+        bottom: 0px;
+        top: 0px;
+        left: 0;
+        position: absolute;
+    }
+
+    .centerscreenDiv {
+        position: absolute;
+        opacity: 100;
+        /*border: 1px solid blue;*/
+        height: 200px;
+        margin-top: -100px; /*half the height*/
+        width: 272px;
+        margin-left: -134px; /*half the width*/
+        top: 50%;
+        left: 50%;
+    }
+
+    .centerFlexBox {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
+
+<div class="fullscreenDiv fulltable">
+
+    <div class="centerscreenDiv">
+        <img src='cards/11.png' height='85' width='50'>
+        <img src='cards/43.png' height='85' width='50'>
+        <img src='cards/card_back.png' height='85' width='50'>
+        <img src='cards/card_back.png' height='85' width='50'>
+        <img src='cards/card_back.png' height='85' width='50'>
+        <br><br>
+        <img src='cards/1.png' height='85' width='50'>
+        <img src='cards/20.png' height='85' width='50'>
+        <img src='cards/25.png' height='85' width='50'>
+        <img src='cards/48.png' height='85' width='50'>
+        <img src='cards/7.png' height='85' width='50'>
     </div>
+</div>    
 
 
 @code {
